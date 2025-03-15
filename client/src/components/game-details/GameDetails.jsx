@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import gameService from "../../services/gameService";
-import ComentsShow from "../coments-show/ComentsShow";
-import ComentsCreate from "../coments-create/ComentsCreate";
+import CommentsShow from "../comments-show/CommentsShow";
+import CommentsCreate from "../comments-create/CommentsCreate";
 
 export default function GameDetails() {
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function GameDetails() {
 
                 <p className="text">{game.summary}</p>
 
-                <ComentsShow />
+                <CommentsShow />
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
                 <div className="buttons">
@@ -57,7 +57,7 @@ export default function GameDetails() {
                 </div>
             </div>
 
-            <ComentsCreate />
+            <CommentsCreate />
 
         </section>
     );

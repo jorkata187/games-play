@@ -1,4 +1,4 @@
-export default function ComentsShow() {
+export default function CommentsShow() {
    return (
         <div className="details-comments">
         <h2>Comments:</h2>

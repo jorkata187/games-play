@@ -1,4 +1,4 @@
-export default function ComentsCreate() {
+export default function CommentsCreate() {
    return (
             <article className="create-comment">
                 <label>Add new comment:</label>
