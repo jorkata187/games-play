@@ -9,12 +9,15 @@ export default {
         const games = Object.values(result);
 
         return games;
-     },
-     getOne(gameId) {
+    },
+    getOne(gameId) {
         return request.get(`${baseUrl}/${gameId}`);
-     },
+    },
     create(gameData) {
         return request.post(baseUrl, gameData);
+    },
+    edit(gameId, gameData) {
+        return request.put(`${baseUrl}/${gameId}`, { ...gameData, _id: gameId });
     },
     delete(gameId) {
         return request.delete(`${baseUrl}/${gameId}`);
