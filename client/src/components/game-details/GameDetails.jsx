@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import gameService from "../../services/gameService";
+import ComentsShow from "../coments-show/ComentsShow";
+import ComentsCreate from "../coments-create/ComentsCreate";
 
 export default function GameDetails() {
     const navigate = useNavigate();
@@ -41,21 +43,7 @@ export default function GameDetails() {
 
                 <p className="text">{game.summary}</p>
 
-                {/* <!-- Bonus ( for Guests and Users ) --> */}
-                <div className="details-comments">
-                    <h2>Comments:</h2>
-                    <ul>
-                        {/* <!-- list all comments for current game (If any) --> */}
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li className="comment">
-                            <p>Content: The best game.</p>
-                        </li>
-                    </ul>
-                    {/* <!-- Display paragraph: If there are no games in the database --> */}
-                    <p className="no-comment">No comments.</p>
-                </div>
+                <ComentsShow />
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
                 <div className="buttons">
@@ -69,15 +57,7 @@ export default function GameDetails() {
                 </div>
             </div>
 
-            {/* <!-- Bonus --> */}
-            {/* <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form">
-                    <textarea name="comment" placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-            </article>
+            <ComentsCreate />
 
         </section>
     );
