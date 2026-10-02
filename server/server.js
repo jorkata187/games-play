@@ -158,8 +158,6 @@
         };
     }
 
-
-
     function composeErrorObject(code, message) {
         return JSON.stringify({
             code,
