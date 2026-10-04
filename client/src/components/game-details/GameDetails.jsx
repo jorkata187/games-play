@@ -5,21 +5,19 @@ import CommentsShow from "../comments-show/CommentsShow";
 import CommentsCreate from "../comments-create/CommentsCreate";
 import commentService from "../../services/commentService";
 import { UserContext } from "../../contexts/UserContext";
+import { useGame } from "../../api/gameApi";
 
 export default function GameDetails() {
     const navigate = useNavigate();
 
-    const {email} = useContext(UserContext)
-    
-    const [game, setGame] = useState({});
-    const [comments, setComments] = useState([]);
-
+    const { email } = useContext(UserContext)
     const { gameId } = useParams();
 
-    useEffect(() => {
-        gameService.getOne(gameId)
-            .then(setGame);
+    const [comments, setComments] = useState([]);
+    const { game } = useGame(gameId);
 
+
+    useEffect(() => {
         commentService.getAll(gameId)
             .then(setComments)
     }, [gameId]);
@@ -67,11 +65,11 @@ export default function GameDetails() {
                     </button>
                 </div>
             </div>
-            <CommentsCreate 
-            email={email} 
-            gameId={gameId}
-            onCreate={commentCreateHandler}
-             />
+            <CommentsCreate
+                email={email}
+                gameId={gameId}
+                onCreate={commentCreateHandler}
+            />
         </section>
     );
 }
