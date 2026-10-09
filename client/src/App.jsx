@@ -2,9 +2,7 @@ import { Routes, Route } from 'react-router'
 
 import './App.css'
 
-import { UserContext } from './contexts/UserContext'
-
-import usePersistedState from './hooks/usePersistedState'
+import UserProvider from './providers/UserProvider'
 
 import Header from './components/header/Header'
 import Home from './components/home/Home'
@@ -18,19 +16,8 @@ import Logout from './components/logout/Logout'
 
 function App() {
 
-	const [authData, setAuthData] = usePersistedState({});
-
-	const userLoginHandler = (resultData) => {
-
-		setAuthData(resultData);
-	};
-
-	const userLogoutHandler = () => {
-		setAuthData({});
-	};
-
 	return (
-		<UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
+		<UserProvider>
 
 			<div id="box">
 				<Header />
@@ -48,7 +35,7 @@ function App() {
 					</Routes>
 				</main>
 			</div>
-		</UserContext.Provider>
+		</UserProvider>
 	)
 }
 
