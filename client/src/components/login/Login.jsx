@@ -15,7 +15,8 @@ export default function Login() {
 
         userLoginHandler(authData);
 
-        navigate('/games');
+        // navigate('/games');
+        navigate(-1); // go back to the previous page
 
     };
 
